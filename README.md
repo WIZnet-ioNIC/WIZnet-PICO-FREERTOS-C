@@ -13,7 +13,7 @@ These sections will guide you through a series of steps from configuring develop
 <a name="development_environment_configuration"></a>
 ## Development environment configuration
 
-To test the FreeRTOS examples, the development environment must be configured to use Raspberry Pi Pico, W5100S-EVB-Pico or W5500-EVB-Pico.
+To test the FreeRTOS examples, the development environment must be configured to use Raspberry Pi Pico, W5100S-EVB-Pico, W5500-EVB-Pico or W55RP20-EVB-Pico.
 
 The FreeRTOS examples were tested by configuring the development environment for **Windows**. Please refer to the '**9.2. Building on MS Windows**' section of '**Getting started with Raspberry Pi Pico**' document below and configure accordingly.
 
@@ -26,22 +26,18 @@ The FreeRTOS examples were tested by configuring the development environment for
 <a name="hardware_requirements"></a>
 ## Hardware requirements
 
-The FreeRTOS examples use **Raspberry Pi Pico** and **WIZnet Ethernet HAT** - ethernet I/O module built on WIZnet's [**W5100S**][link-w5100s] ethernet chip, **W5100S-EVB-Pico** - ethernet I/O module built on [**RP2040**][link-rp2040] and WIZnet's [**W5100S**][link-w5100s] ethernet chip or **W5500-EVB-Pico** - ethernet I/O module built on [**RP2040**][link-rp2040] and WIZnet's [**W5500**][link-w5500] ethernet chip.
+The FreeRTOS examples use **Raspberry Pi Pico** and **WIZnet Ethernet HAT** - ethernet I/O module built on WIZnet's [**W5100S**][link-w5100s] ethernet chip, **W5100S-EVB-Pico** - ethernet I/O module built on [**RP2040**][link-rp2040] and WIZnet's [**W5100S**][link-w5100s] ethernet chip or **W5500-EVB-Pico** and **W55RP20-EVB-Pico** - ethernet I/O module built on [**RP2040**][link-rp2040] and WIZnet's [**W5500**][link-w5500] ethernet chip.
 
-- [**Raspberry Pi Pico**][link-raspberry_pi_pico]
-
-- [**WIZnet Ethernet HAT**][link-wiznet_ethernet_hat]
-
+- [**Raspberry Pi Pico**][link-raspberry_pi_pico] & - [**WIZnet Ethernet HAT**][link-wiznet_ethernet_hat]
 - [**W5100S-EVB-Pico**][link-w5100s-evb-pico]
-
 - [**W5500-EVB-Pico**][link-w5500-evb-pico]
-
+- [**W55RP20-EVB-Pico**][link-w55rp20-evb-pico]
 
 
 <a name="freertos_example_structure"></a>
 ## FreeRTOS example structure
 
-Examples are available at '**RP2040-HAT-FREERTOS-C/examples/**' directory. As of now, following examples are provided.
+Examples are available at '**WIZnet-PICO-FREERTOS-C/examples/**' directory. As of now, following examples are provided.
 
 - [**DHCP & DNS**][link-dhcp_dns]
 - [**MQTT**][link-mqtt]
@@ -55,7 +51,7 @@ Note that **ioLibrary_Driver**, **FreeRTOS-Kernel**, **mbedtls**, **pico-sdk** a
 - **pico-sdk** is made available by Pico to enable developers to build software applications for the Pico platform.
 - **pico-extras** has additional libraries that are not yet ready for inclusion the Pico SDK proper, or are just useful but don't necessarily belong in the Pico SDK.
 
-Libraries are located in the '**RP2040-HAT-FREERTOS-C/libraries/**' directory.
+Libraries are located in the '**WIZnet-PICO-FREERTOS-C/libraries/**' directory.
 
 - [**ioLibrary_Driver**][link-iolibrary_driver]
 - [**FreeRTOS-Kernel**][link-freertos_kernel]
@@ -63,9 +59,9 @@ Libraries are located in the '**RP2040-HAT-FREERTOS-C/libraries/**' directory.
 - [**pico-sdk**][link-pico_sdk]
 - [**pico-extras**][link-pico_extras]
 
-If you want to modify the code that MCU-dependent and use a MCU other than **RP2040**, you can modify it in the **RP2040-HAT-FREERTOS-C/port/** directory.
+If you want to modify the code that MCU-dependent and use a MCU other than **RP2040**, you can modify it in the **WIZnet-PICO-FREERTOS-C/port/** directory.
 
-port is located in the '**RP2040-HAT-FREERTOS-C/port/**' directory.
+port is located in the '**WIZnet-PICO-FREERTOS-C/port/**' directory.
 
 - [**ioLibrary_Driver**][link-port_iolibrary_driver]
 - [**FreeRTOS-Kernel**][link-port_freertos_kernel]
@@ -87,35 +83,44 @@ If the FreeRTOS examples are cloned, the library set as a submodule is an empty 
 cd [user path]
 
 // e.g.
-cd D:/RP2040
+cd D:/WIZnet-Pico
 
 /* Clone */
-git clone --recurse-submodules https://github.com/Wiznet/RP2040-HAT-FREERTOS-C.git
+git clone --recurse-submodules https://github.com/Wiznet/WIZnet-PICO-FREERTOS-C.git
 ```
 
 With Visual Studio Code, the library set as a submodule is automatically downloaded, so it doesn't matter whether the library set as a submodule is an empty directory or not, so refer to it.
 
 2. Setup ethetnet chip
 
-Setup the ethernet chip in '**CMakeLists.txt**' in '**RP2040-HAT-FREERTOS-C/**' directory according to the evaluation board to be used referring to the following.
+Setup the ethernet chip in '**CMakeLists.txt**' in '**WIZnet-PICO-FREERTOS-C/**' directory according to the evaluation board to be used referring to the following.
 
-- WIZnet Ethernet HAT : W5100S
-- W5100S-EVB-Pico : W5100S
-- W5500-EVB-Pico : W5500
+- WIZnet Ethernet HAT
+- W5100S-EVB-Pico
+- W5500-EVB-Pico
+- W55RP20-EVB-Pico
 
 For example, when using WIZnet Ethernet HAT or W5100S-EVB-Pico :
 
 ```cpp
 # Set ethernet chip
-set(WIZNET_CHIP W5100S)
+set(BOARD_NAME WIZnet_Ethernet_HAT)
 ```
 
 When using W5500-EVB-Pico :
 
 ```cpp
 # Set ethernet chip
-set(WIZNET_CHIP W5500)
+set(BOARD_NAME W5500_EVB_PICO)
 ```
+
+When using W55RP20-EVB-Pico :
+
+```cpp
+# Set ethernet chip
+set(BOARD_NAME W55RP20_EVB_PICO)
+```
+
 
 3. Test
 
@@ -129,7 +134,7 @@ Please refer to 'README.md' in each example directory to find detail guide for t
 We moved the MCU dependent code to the port directory. The tree of port is shown below.
 
 ```
-RP2040-HAT-FREERTOS-C
+WIZNET-PICO-FREERTOS-C
 ┣ port
     ┣ FreeRTOS-Kernel
     ┃   ┗ inc
@@ -137,10 +142,14 @@ RP2040-HAT-FREERTOS-C
     ┣ ioLibrary_Driver
     ┃   ┣ inc
     ┃   ┃   ┣ w5x00_gpio_irq.h
-    ┃   ┃   ┗ w5x00_spi.h
+    ┃   ┃   ┣ w5x00_spi.h
+    ┃   ┃   ┣ w5x00_spi_pio.h
+    ┃   ┃   ┗ wiznet_spi.h
     ┃   ┗ src
     ┃   ┃   ┣ w5x00_gpio_irq.c
-    ┃   ┃   ┗ w5x00_spi.c
+    ┃   ┃   ┣ w5x00_spi.c
+    ┃   ┃   ┣ w5x00_spi_pio.c
+    ┃   ┃   ┗ w5x00_spi_pio.pio
     ┣ mbedtls
     ┃   ┗ inc
     ┃   ┃   ┗ ssl_config.h
@@ -153,7 +162,7 @@ RP2040-HAT-FREERTOS-C
 
 - **ioLibrary_Driver**
 
-If you want to change things related to **SPI**, such as the SPI port number and SPI read/write function, or GPIO port number and function related to **interrupt** or use a different MCU without using the RP2040, you need to change the code in the '**RP2040-HAT-FREERTOS-C/port/ioLibrary_Driver/**' directory. Here is information about functions.
+If you want to change things related to **SPI**, such as the SPI port number and SPI read/write function, or GPIO port number and function related to **interrupt** or use a different MCU without using the RP2040, you need to change the code in the '**WIZnet-PICO-FREERTOS-C/port/ioLibrary_Driver/**' directory. Here is information about functions.
 
 ```cpp
 /* W5x00 */
@@ -335,7 +344,7 @@ static void wizchip_gpio_interrupt_callback(uint gpio, uint32_t events);
 
 - **timer**
 
-If you want to change things related to the **timer**. Also, if you use a different MCU without using the RP2040, you need to change the code in the '**RP2040-HAT-FREERTOS-C/port/timer/**' directory. Here is information about functions.
+If you want to change things related to the **timer**. Also, if you use a different MCU without using the RP2040, you need to change the code in the '**WIZnet-PICO-FREERTOS-C/port/timer/**' directory. Here is information about functions.
 
 ```cpp
 /* Timer */
@@ -378,6 +387,7 @@ Link
 [link-rp2040]: https://www.raspberrypi.org/products/rp2040/
 [link-w5100s]: https://docs.wiznet.io/Product/iEthernet/W5100S/overview
 [link-w5500]: https://docs.wiznet.io/Product/iEthernet/W5500/overview
+[link-w55rp20-evb-pico] : https://docs.wiznet.io/Product/ioNIC/W55RP20/w55rp20-evb-pico#overview
 [link-raspberry_pi_pico]: https://www.raspberrypi.org/products/raspberry-pi-pico/
 [link-raspberry_pi_pico_main]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/getting_started/raspberry_pi_pico_main.png
 [link-wiznet_ethernet_hat]: https://docs.wiznet.io/Product/Open-Source-Hardware/wiznet_ethernet_hat
