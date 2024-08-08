@@ -387,7 +387,7 @@ Link
 [link-rp2040]: https://www.raspberrypi.org/products/rp2040/
 [link-w5100s]: https://docs.wiznet.io/Product/iEthernet/W5100S/overview
 [link-w5500]: https://docs.wiznet.io/Product/iEthernet/W5500/overview
-[link-w55rp20-evb-pico] : https://docs.wiznet.io/Product/ioNIC/W55RP20/w55rp20-evb-pico#overview
+[link-w55rp20-evb-pico]: https://docs.wiznet.io/Product/ioNIC/W55RP20/w55rp20-evb-pico#overview
 [link-raspberry_pi_pico]: https://www.raspberrypi.org/products/raspberry-pi-pico/
 [link-raspberry_pi_pico_main]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/getting_started/raspberry_pi_pico_main.png
 [link-wiznet_ethernet_hat]: https://docs.wiznet.io/Product/Open-Source-Hardware/wiznet_ethernet_hat
