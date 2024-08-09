@@ -100,7 +100,6 @@ static volatile uint32_t g_msec_cnt = 0;
 void tcp_task(void *argument);
 void recv_task(void *argument);
 
-void *pvPortCalloc(size_t sNb, size_t sSize);
 void pvPortFree(void *vPtr);
 
 /* Clock */
@@ -324,23 +323,6 @@ void recv_task(void *argument)
             }
         }
     }
-}
-
-void *pvPortCalloc(size_t sNb, size_t sSize)
-{
-    void *vPtr = NULL;
-
-    if (sSize > 0)
-    {
-        vPtr = pvPortMalloc(sSize * sNb); // Call FreeRTOS or other standard API
-
-        if (vPtr)
-        {
-            memset(vPtr, 0, (sSize * sNb)); // Must required
-        }
-    }
-
-    return vPtr;
 }
 
 void pvPortFree(void *vPtr)

@@ -10,6 +10,13 @@ endif()
 include(pico_sdk_import.cmake)
 include(wiznet_pico_freertos_c_sdk_version.cmake)
 
+# Pull in FreeRTOS (must be before project)
+if(NOT DEFINED FREERTOS_KERNEL_PATH)
+set(FREERTOS_KERNEL_PATH ${CMAKE_SOURCE_DIR}/libraries/FreeRTOS-Kernel)
+    message(STATUS "FREERTOS_KERNEL_PATH = ${FREERTOS_KERNEL_PATH}")
+endif()
+include(FreeRTOS_Kernel_import.cmake)
+
 # Set project name
 set(PROJECT_NAME WIZNET-PICO-FREERTOS-C)
 
@@ -47,7 +54,6 @@ elseif(${BOARD_NAME} STREQUAL W55RP20_EVB_PICO)
 else() 
     message(FATAL_ERROR "BOARD_NAME is wrong = ${BOARD_NAME}")
 endif()
-
 
 message(STATUS "WIZNET_CHIP = ${WIZNET_CHIP}")
 

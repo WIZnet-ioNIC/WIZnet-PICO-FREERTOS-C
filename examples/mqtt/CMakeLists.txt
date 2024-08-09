@@ -4,11 +4,15 @@ add_executable(${TARGET_NAME}
         ${TARGET_NAME}.c
         )
 
+target_include_directories(${TARGET_NAME} PUBLIC
+        ${PORT_DIR}/FreeRTOS-Kernel/inc
+)
+
 target_link_libraries(${TARGET_NAME} PRIVATE
         pico_stdlib
         hardware_spi
         hardware_dma
-        FREERTOS_FILES
+        FreeRTOS-Kernel-Heap4
         ETHERNET_FILES
         IOLIBRARY_FILES
         MQTT_FILES

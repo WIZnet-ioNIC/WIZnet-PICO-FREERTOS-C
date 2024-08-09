@@ -10,8 +10,6 @@
  * ----------------------------------------------------------------------------------------------------
  */
 #include <stdio.h>
-#include <FreeRTOS.h>
-
 #include "port_common.h"
 
 #include "wizchip_conf.h"
