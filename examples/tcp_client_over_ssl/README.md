@@ -175,12 +175,12 @@ Link
 
 [link-tera_term]: https://osdn.net/projects/ttssh2/releases/
 [link-openssl]: https://www.openssl.org/source/
-[link-raspberry_pi_pico_usb_mass_storage]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/tcp_client_over_ssl/raspberry_pi_pico_usb_mass_storage.png
-[link-connect_to_serial_com_port]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/tcp_client_over_ssl/connect_to_serial_com_port.png
-[link-run_openssl]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/tcp_client_over_ssl/run_openssl.png
-[link-create_ssl_server_using_openssl]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/tcp_client_over_ssl/create_ssl_server_using_openssl.png
-[link-see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message_1]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/tcp_client_over_ssl/see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message_1.png
-[link-see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message_2]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/tcp_client_over_ssl/see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message_2.png
-[link-receive_sent_message_1]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/tcp_client_over_ssl/receive_sent_message_1.png
-[link-receive_sent_message_2]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/tcp_client_over_ssl/receive_sent_message_2.png
+[link-raspberry_pi_pico_usb_mass_storage]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/blob/main/static/images/tcp_client_over_ssl/raspberry_pi_pico_usb_mass_storage.png
+[link-connect_to_serial_com_port]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/blob/main/static/images/tcp_client_over_ssl/connect_to_serial_com_port.png
+[link-run_openssl]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/blob/main/static/images/tcp_client_over_ssl/run_openssl.png
+[link-create_ssl_server_using_openssl]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/blob/main/static/images/tcp_client_over_ssl/create_ssl_server_using_openssl.png
+[link-see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message_1]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/blob/main/static/images/tcp_client_over_ssl/see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message_1.png
+[link-see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message_2]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/blob/main/static/images/tcp_client_over_ssl/see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message_2.png
+[link-receive_sent_message_1]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/blob/main/static/images/tcp_client_over_ssl/receive_sent_message_1.png
+[link-receive_sent_message_2]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/blob/main/static/images/tcp_client_over_ssl/receive_sent_message_2.png
 [link-mbed_tls]: https://github.com/ARMmbed/mbedtls/tree/662deb38d61bb1fc6392c55a5134d1bd1a116118

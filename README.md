@@ -86,7 +86,7 @@ cd [user path]
 cd D:/WIZnet-Pico
 
 /* Clone */
-git clone --recurse-submodules https://github.com/Wiznet/WIZnet-PICO-FREERTOS-C.git
+git clone --recurse-submodules https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C.git
 ```
 
 With Visual Studio Code, the library set as a submodule is automatically downloaded, so it doesn't matter whether the library set as a submodule is an empty directory or not, so refer to it.
@@ -389,22 +389,18 @@ Link
 [link-w5500]: https://docs.wiznet.io/Product/iEthernet/W5500/overview
 [link-w55rp20-evb-pico]: https://docs.wiznet.io/Product/ioNIC/W55RP20/w55rp20-evb-pico#overview
 [link-raspberry_pi_pico]: https://www.raspberrypi.org/products/raspberry-pi-pico/
-[link-raspberry_pi_pico_main]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/getting_started/raspberry_pi_pico_main.png
 [link-wiznet_ethernet_hat]: https://docs.wiznet.io/Product/Open-Source-Hardware/wiznet_ethernet_hat
-[link-wiznet_ethernet_hat_main]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/getting_started/wiznet_ethernet_hat_main.png
 [link-w5100s-evb-pico]: https://docs.wiznet.io/Product/iEthernet/W5100S/w5100s-evb-pico
-[link-w5100s-evb-pico_main]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/getting_started/w5100s-evb-pico_main.png
 [link-w5500-evb-pico]: https://docs.wiznet.io/Product/iEthernet/W5500/w5500-evb-pico
-[link-w5500-evb-pico_main]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/getting_started/w5500-evb-pico_main.png
-[link-dhcp_dns]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/tree/main/examples/dhcp_dns
-[link-mqtt]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/tree/main/examples/mqtt
-[link-tcp_client_over_ssl]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/tree/main/examples/tcp_client_over_ssl
+[link-dhcp_dns]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/tree/main/examples/dhcp_dns
+[link-mqtt]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/tree/main/examples/mqtt
+[link-tcp_client_over_ssl]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/tree/main/examples/tcp_client_over_ssl
 [link-iolibrary_driver]: https://github.com/Wiznet/ioLibrary_Driver
 [link-freertos_kernel]: https://github.com/FreeRTOS/FreeRTOS-Kernel
 [link-mbedtls]: https://github.com/ARMmbed/mbedtls
 [link-pico_sdk]: https://github.com/raspberrypi/pico-sdk
 [link-pico_extras]: https://github.com/raspberrypi/pico-extras
-[link-port_iolibrary_driver]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/tree/main/port/ioLibrary_Driver
-[link-port_freertos_kernel]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/tree/main/port/FreeRTOS-Kernel
-[link-port_mbedtls]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/tree/main/port/mbedtls
-[link-port_timer]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/tree/main/port/timer
+[link-port_iolibrary_driver]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/tree/main/port/ioLibrary_Driver
+[link-port_freertos_kernel]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/tree/main/port/FreeRTOS-Kernel
+[link-port_mbedtls]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/tree/main/port/mbedtls
+[link-port_timer]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/tree/main/port/timer

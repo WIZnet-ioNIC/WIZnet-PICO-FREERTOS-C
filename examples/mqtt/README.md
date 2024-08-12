@@ -158,10 +158,10 @@ Link
 
 [link-tera_term]: https://osdn.net/projects/ttssh2/releases/
 [link-mosquitto]: https://mosquitto.org/download/
-[link-raspberry_pi_pico_usb_mass_storage]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/mqtt/raspberry_pi_pico_usb_mass_storage.png
-[link-connect_to_serial_com_port]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/mqtt/connect_to_serial_com_port.png
-[link-run_mosquitto]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/mqtt/publish/run_mosquitto.png
-[link-create_mqtt_broker_using_mosquitto]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/mqtt/create_mqtt_broker_using_mosquitto.png
-[link-see_network_information_of_raspberry_pi_pico_connecting_to_broker_subscribing_to_subscribe_topic_and_publishing_message_1]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/mqtt/see_network_information_of_raspberry_pi_pico_connecting_to_broker_subscribing_to_subscribe_topic_and_publishing_message_1.png
-[link-see_network_information_of_raspberry_pi_pico_connecting_to_broker_subscribing_to_subscribe_topic_and_publishing_message_2]: https://github.com/Wiznet/RP2040-HAT-FREERTOS-C/blob/main/static/images/mqtt/see_network_information_of_raspberry_pi_pico_connecting_to_broker_subscribing_to_subscribe_topic_and_publishing_message_2.png
+[link-raspberry_pi_pico_usb_mass_storage]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/blob/main/static/images/mqtt/raspberry_pi_pico_usb_mass_storage.png
+[link-connect_to_serial_com_port]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/blob/main/static/images/mqtt/connect_to_serial_com_port.png
+[link-run_mosquitto]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/blob/main/static/images/mqtt/publish/run_mosquitto.png
+[link-create_mqtt_broker_using_mosquitto]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/blob/main/static/images/mqtt/create_mqtt_broker_using_mosquitto.png
+[link-see_network_information_of_raspberry_pi_pico_connecting_to_broker_subscribing_to_subscribe_topic_and_publishing_message_1]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/blob/main/static/images/mqtt/see_network_information_of_raspberry_pi_pico_connecting_to_broker_subscribing_to_subscribe_topic_and_publishing_message_1.png
+[link-see_network_information_of_raspberry_pi_pico_connecting_to_broker_subscribing_to_subscribe_topic_and_publishing_message_2]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-FREERTOS-C/blob/main/static/images/mqtt/see_network_information_of_raspberry_pi_pico_connecting_to_broker_subscribing_to_subscribe_topic_and_publishing_message_2.png
 [link-authentication_methods]: https://mosquitto.org/documentation/authentication-methods/
