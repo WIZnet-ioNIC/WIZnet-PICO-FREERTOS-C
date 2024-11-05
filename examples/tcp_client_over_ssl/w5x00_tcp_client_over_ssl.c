@@ -30,7 +30,6 @@
 #include "mbedtls/error.h"
 #include "mbedtls/ssl.h"
 #include "mbedtls/ctr_drbg.h"
-#include "mbedtls/compat-1.3.h"
 
 /**
  * ----------------------------------------------------------------------------------------------------
@@ -137,9 +136,9 @@ int main()
     wizchip_initialize();
     wizchip_check();
 
-    wizchip_gpio_interrupt_initialize(SOCKET_SSL, gpio_callback);
     wizchip_1ms_timer_initialize(repeating_timer_callback);
-
+    wizchip_gpio_interrupt_initialize(SOCKET_SSL, gpio_callback);
+    
     xTaskCreate(tcp_task, "TCP_Task", TCP_TASK_STACK_SIZE, NULL, TCP_TASK_PRIORITY, NULL);
     xTaskCreate(recv_task, "RECV_Task", RECV_TASK_STACK_SIZE, NULL, RECV_TASK_PRIORITY, NULL);
 
@@ -188,29 +187,23 @@ void tcp_task(void *argument)
     printf(" Supported ciphersuite lists\n");
 
     list = mbedtls_ssl_list_ciphersuites();
-
     while (*list)
     {
         printf(" %-42s\n", mbedtls_ssl_get_ciphersuite_name(*list));
-
         list++;
-
         if (!*list)
         {
             break;
         }
 
         printf(" %s\n", mbedtls_ssl_get_ciphersuite_name(*list));
-
         list++;
     }
 
-    retval = socket((uint8_t)(g_ssl.p_bio), Sn_MR_TCP, PORT_SSL, SF_TCP_NODELAY);
-
+    retval = socket((uint8_t)(g_ssl.private_p_bio), Sn_MR_TCP, PORT_SSL, SF_TCP_NODELAY);
     if (retval != SOCKET_SSL)
     {
         printf(" Socket failed %d\n", retval);
-
         while (1)
         {
             vTaskDelay(1000 * 1000);
@@ -218,16 +211,13 @@ void tcp_task(void *argument)
     }
 
     start_ms = millis();
-
     do
     {
-        retval = connect((uint8_t)(g_ssl.p_bio), g_ssl_target_ip, PORT_SSL);
-
+        retval = connect((uint8_t)(g_ssl.private_p_bio), g_ssl_target_ip, PORT_SSL);
         if ((retval == SOCK_OK) || (retval == SOCKERR_TIMEOUT))
         {
             break;
         }
-
         vTaskDelay(1000);
 
     } while ((millis() - start_ms) < RECV_TIMEOUT);
@@ -235,13 +225,11 @@ void tcp_task(void *argument)
     if ((retval != SOCK_OK) || (retval == SOCK_BUSY))
     {
         printf(" Connect failed %d\n", retval);
-
         while (1)
         {
             vTaskDelay(1000 * 1000);
         }
     }
-
     printf(" Connected %d\n", retval);
 
     while ((retval = mbedtls_ssl_handshake(&g_ssl)) != 0)
@@ -249,14 +237,12 @@ void tcp_task(void *argument)
         if ((retval != MBEDTLS_ERR_SSL_WANT_READ) && (retval != MBEDTLS_ERR_SSL_WANT_WRITE))
         {
             printf(" failed\n  ! mbedtls_ssl_handshake returned -0x%x\n", -retval);
-
             while (1)
             {
                 vTaskDelay(1000 * 1000);
             }
         }
     }
-
     printf(" ok\n    [ Ciphersuite is %s ]\n", mbedtls_ssl_get_ciphersuite(&g_ssl));
 
     while (1)
@@ -265,7 +251,6 @@ void tcp_task(void *argument)
         sprintf(g_send_buf, " Send data : %d\n", send_cnt);
 
         retval = mbedtls_ssl_write(&g_ssl, g_send_buf, strlen(g_send_buf));
-
         if (retval < 0)
         {
             printf(" failed\n  ! mbedtls_ssl_write returned -0x%x\n", -retval);
@@ -275,9 +260,7 @@ void tcp_task(void *argument)
                 vTaskDelay(1000 * 1000);
             }
         }
-
         printf(" Send OK : %d\n", send_cnt++);
-
         vTaskDelay(1000 * 3);
     }
 }
@@ -292,6 +275,7 @@ void recv_task(void *argument)
     {
         xSemaphoreTake(recv_sem, portMAX_DELAY);
         ctlwizchip(CW_GET_INTERRUPT, (void *)&reg_val);
+
 #if _WIZCHIP_ == W5100S
         reg_val &= 0x00FF;
 #elif _WIZCHIP_ == W5500
@@ -316,9 +300,7 @@ void recv_task(void *argument)
             if (recv_len > 0)
             {
                 memset(g_recv_buf, 0, ETHERNET_BUF_MAX_SIZE);
-
                 mbedtls_ssl_read(&g_ssl, g_recv_buf, (uint16_t)recv_len);
-
                 printf("%s\n", g_recv_buf);
             }
         }
@@ -367,7 +349,6 @@ static int wizchip_ssl_init(uint8_t *socket_fd)
 
         return -1;
     }
-
     printf(" Socket descriptor %d\n", socket_fd);
 
     mbedtls_ssl_conf_authmode(&g_conf, MBEDTLS_SSL_VERIFY_NONE);
@@ -381,7 +362,6 @@ static int wizchip_ssl_init(uint8_t *socket_fd)
 
         return -1;
     }
-
     mbedtls_ssl_set_bio(&g_ssl, socket_fd, send, recv, NULL);
 
     return 0;
@@ -400,9 +380,7 @@ static int ssl_random_callback(void *p_rng, unsigned char *output, size_t output
     {
         *output++ = rand() % 0xff;
     }
-
     srand(rand());
-
     return 0;
 }
 

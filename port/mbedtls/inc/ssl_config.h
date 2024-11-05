@@ -29,8 +29,6 @@
 #ifndef MBEDTLS_CONFIG_H
 #define MBEDTLS_CONFIG_H
 
-#include "mbedtls/check_config.h"
-
 #if defined(_MSC_VER) && !defined(_CRT_SECURE_NO_DEPRECATE)
 #define _CRT_SECURE_NO_DEPRECATE 1
 #endif
@@ -74,6 +72,8 @@
 #define MBEDTLS_PK_C
 #define MBEDTLS_PK_PARSE_C
 #define MBEDTLS_RSA_C
+#define MBEDTLS_ECP_C
+#define MBEDTLS_ECP_DP_SECP384R1_ENABLED
 #define MBEDTLS_SHA256_C
 
 #define MBEDTLS_SSL_CLI_C
