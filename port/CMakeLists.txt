@@ -17,6 +17,7 @@ endif()
 target_include_directories(IOLIBRARY_FILES PUBLIC
         ${WIZNET_DIR}/Ethernet
         ${PORT_DIR}/ioLibrary_Driver/inc
+        ${PORT_DIR}/FreeRTOS-Kernel/inc
         ${PORT_DIR}
         )
 
@@ -26,6 +27,7 @@ target_link_libraries(IOLIBRARY_FILES PUBLIC
         hardware_spi
         hardware_dma
         hardware_clocks
+        FreeRTOS-Kernel-Heap4
         )
 
 # timer

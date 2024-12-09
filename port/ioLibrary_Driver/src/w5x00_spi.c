@@ -20,12 +20,16 @@
 #include "wiznet_spi_pio.h"
 #endif
 
+#include <FreeRTOS.h>
+#include <task.h>
+#include <semphr.h>
+
 /**
  * ----------------------------------------------------------------------------------------------------
  * Variables
  * ----------------------------------------------------------------------------------------------------
  */
-static critical_section_t g_wizchip_cri_sec;
+static xSemaphoreHandle wizchip_critical_sem = NULL;
 
 #ifdef USE_SPI_DMA
 static uint dma_tx;
@@ -154,14 +158,12 @@ static void wizchip_write_burst(uint8_t *pBuf, uint16_t len)
 
 static void wizchip_critical_section_lock(void)
 {
-    critical_section_enter_blocking(&g_wizchip_cri_sec);
-    vPortEnterCritical();
+    xSemaphoreTake(wizchip_critical_sem, portMAX_DELAY);
 }
 
 static void wizchip_critical_section_unlock(void)
 {
-    critical_section_exit(&g_wizchip_cri_sec);
-    vPortExitCritical();
+    xSemaphoreGive(wizchip_critical_sem);
 }
 
 void wizchip_spi_initialize(void)
@@ -211,7 +213,7 @@ void wizchip_spi_initialize(void)
 
 void wizchip_cris_initialize(void)
 {
-    critical_section_init(&g_wizchip_cri_sec);
+    wizchip_critical_sem = xSemaphoreCreateCounting((unsigned portBASE_TYPE)0x7fffffff, (unsigned portBASE_TYPE)1);
     reg_wizchip_cris_cbfunc(wizchip_critical_section_lock, wizchip_critical_section_unlock);
 }
 
