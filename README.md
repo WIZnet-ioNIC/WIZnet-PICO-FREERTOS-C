@@ -2,11 +2,12 @@
 
 These sections will guide you through a series of steps from configuring development environment to running FreeRTOS examples using the **WIZnet's ethernet products**.
 
-- [**Development environment configuration**](#development_environment_configuration)
-- [**Hardware requirements**](#hardware_requirements)
-- [**FreeRTOS example structure**](#freertos_example_structure)
-- [**FreeRTOS example testing**](#freertos_example_testing)
-- [**How to use port directory**](#how_to_use_port_directory)
+- [Getting Started with FreeRTOS Examples](#getting-started-with-freertos-examples)
+  - [Development environment configuration](#development-environment-configuration)
+  - [Hardware requirements](#hardware-requirements)
+  - [FreeRTOS example structure](#freertos-example-structure)
+  - [FreeRTOS example testing](#freertos-example-testing)
+  - [How to use port directory](#how-to-use-port-directory)
 
 
 
@@ -133,6 +134,19 @@ Please refer to 'README.md' in each example directory to find detail guide for t
 > git apply ./patches/0001_pico_sdk_clocks.patch
 > ```
 
+> ※ To test the TFTP example, please apply the following patch.
+> 
+> ```cpp
+> cd libraries/ioLibrary_Driver
+> git apply ../../patches/0002_iolibrary_driver_tftp.patch
+> ```
+
+> ※ To test the FTP client example, please apply the following patch.
+> 
+> ```cpp
+> cd libraries/ioLibrary_Driver
+> git apply ../../patches/0003_iolibrary_driver_ftp_client.patch
+> ```
 
 <a name="how_to_use_port_directory"></a>
 ## How to use port directory

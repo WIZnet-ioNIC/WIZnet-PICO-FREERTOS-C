@@ -31,6 +31,7 @@
 #include "mbedtls/error.h"
 #include "mbedtls/ssl.h"
 #include "mbedtls/ctr_drbg.h"
+#include "mbedtls/platform.h"
 
 /**
  * ----------------------------------------------------------------------------------------------------
@@ -108,6 +109,8 @@ static void set_clock_khz(void);
 /* SSL */
 static int wizchip_ssl_init(uint8_t *socket_fd);
 static int ssl_random_callback(void *p_rng, unsigned char *output, size_t output_len);
+static int tcp_send(void *ctx, const unsigned char *buf, size_t len);
+static int tcp_recv(void *ctx, unsigned char *buf, size_t len);
 
 /* GPIO  */
 static void gpio_callback(void);
@@ -172,7 +175,7 @@ void tcp_task(void *argument)
     /* Get network information */
     print_network_information(g_net_info);
 
-    retval = wizchip_ssl_init(SOCKET_SSL);
+    retval = wizchip_ssl_init((void *)SOCKET_SSL);
 
     if (retval < 0)
     {
@@ -201,7 +204,7 @@ void tcp_task(void *argument)
         list++;
     }
 
-    retval = socket((uint8_t)(g_ssl.private_p_bio), Sn_MR_TCP, PORT_SSL, SF_TCP_NODELAY);
+    retval = socket((uint8_t)(uintptr_t)(g_ssl.private_p_bio), Sn_MR_TCP, PORT_SSL, SF_TCP_NODELAY);
     if (retval != SOCKET_SSL)
     {
         printf(" Socket failed %d\n", retval);
@@ -214,7 +217,7 @@ void tcp_task(void *argument)
     start_ms = millis();
     do
     {
-        retval = connect((uint8_t)(g_ssl.private_p_bio), g_ssl_target_ip, PORT_SSL);
+        retval = connect((uint8_t)(uintptr_t)(g_ssl.private_p_bio), g_ssl_target_ip, PORT_SSL);
         if ((retval == SOCK_OK) || (retval == SOCKERR_TIMEOUT))
         {
             break;
@@ -363,7 +366,7 @@ static int wizchip_ssl_init(uint8_t *socket_fd)
 
         return -1;
     }
-    mbedtls_ssl_set_bio(&g_ssl, socket_fd, send, recv, NULL);
+    mbedtls_ssl_set_bio(&g_ssl, socket_fd, tcp_send, tcp_recv, NULL);
 
     return 0;
 }
@@ -403,4 +406,14 @@ static void repeating_timer_callback(void)
 static time_t millis(void)
 {
     return g_msec_cnt;
+}
+
+static int tcp_send(void *ctx, const unsigned char *buf, size_t len)
+{
+    return send((uint8_t)(uintptr_t)ctx, (uint8_t *)buf, (uint16_t)len);
+}
+
+static int tcp_recv(void *ctx, unsigned char *buf, size_t len)
+{
+    return recv((uint8_t)(uintptr_t)ctx, (uint8_t *)buf, (uint16_t)len);
 }
