@@ -10,3 +10,6 @@
 [submodule "libraries/pico-extras"]
 	path = libraries/pico-extras
 	url = https://github.com/raspberrypi/pico-extras.git
+[submodule "libraries/FreeRTOS-Kernel"]
+	path = libraries/FreeRTOS-Kernel
+	url = https://github.com/raspberrypi/FreeRTOS-Kernel
