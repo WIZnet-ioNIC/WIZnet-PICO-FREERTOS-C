@@ -104,6 +104,10 @@
 #define configKERNEL_INTERRUPT_PRIORITY         ( 3 << (8 - __NVIC_PRIO_BITS) )
 #define configMAX_SYSCALL_INTERRUPT_PRIORITY    ( 1 << (8 - __NVIC_PRIO_BITS) )
 
+
+#ifdef SIO_IRQ_FLAG
+#define SIO_IRQ_PROC0 15
+#endif
 #define FREE_RTOS_KERNEL_SMP 0
 #if FREE_RTOS_KERNEL_SMP // set by the RP2040 SMP port of FreeRTOS
 /* SMP port only */
@@ -146,6 +150,10 @@ to exclude the API function. */
 #define INCLUDE_xTaskGetHandle                  1
 #define INCLUDE_xTaskResumeFromISR              1
 #define INCLUDE_xQueueGetMutexHolder            1
+
+#define configENABLE_MPU                        0
+#define configENABLE_TRUSTZONE                  0
+#define configRUN_FREERTOS_SECURE_ONLY          1
 
 /* A header file that defines trace macro can be included here. */
 

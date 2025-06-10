@@ -29,6 +29,8 @@
 #ifndef MBEDTLS_CONFIG_H
 #define MBEDTLS_CONFIG_H
 
+// #include "mbedtls/check_config.h"
+
 #if defined(_MSC_VER) && !defined(_CRT_SECURE_NO_DEPRECATE)
 #define _CRT_SECURE_NO_DEPRECATE 1
 #endif
@@ -56,6 +58,7 @@
 #define MBEDTLS_AESNI_C
 #define MBEDTLS_AES_C
 #define MBEDTLS_ASN1_PARSE_C
+#define MBEDTLS_ASN1_WRITE_C
 
 #define MBEDTLS_BASE64_C
 #define MBEDTLS_BIGNUM_C

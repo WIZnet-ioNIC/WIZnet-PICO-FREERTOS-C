@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 WIZnet Co.,Ltd
+ * Copyright (c) 2021 WIZnet Co.,Ltd
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
