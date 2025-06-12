@@ -38,16 +38,16 @@ void wizchip_gpio_interrupt_initialize(uint8_t socket, void (*callback)(void))
 
     reg_val = (SIK_CONNECTED | SIK_DISCONNECTED | SIK_RECEIVED | SIK_TIMEOUT); // except SendOK
     ret_val = ctlsocket(socket, CS_SET_INTMASK, (void *)&reg_val);
-    printf("[ctlsocket] socket=%d, INTMASK=0x%08lx, ret=0x%02x\n", socket, reg_val, ret_val);
+    ret_val = ctlsocket(socket, CS_SET_INTMASK, (void *)&reg_val);
 
 #if (_WIZCHIP_ == W5100S)
     reg_val = (1 << socket);
 #else
     reg_val = ((1 << socket) << 8);
-    // reg_val = (1U << (socket + 8));  // ex: socket=2 → 0x00000400
 #endif
+    
     ret_val = ctlwizchip(CW_SET_INTRMASK, (void *)&reg_val);
-    printf("[ctlwizchip] socket=%d, INTRMASK=0x%08lx, ret=0x%02x\n", socket, reg_val, ret_val);
+
     callback_ptr = callback;
     gpio_set_irq_enabled_with_callback(PIN_INT, GPIO_IRQ_EDGE_FALL, true, &wizchip_gpio_interrupt_callback);
 }

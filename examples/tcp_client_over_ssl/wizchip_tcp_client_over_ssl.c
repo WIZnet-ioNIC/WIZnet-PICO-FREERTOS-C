@@ -301,7 +301,7 @@ void tcp_task(void *argument)
 void recv_task(void *argument)
 {
     uint8_t socket_num;
-    uint16_t reg_val;
+    uint32_t reg_val;
     uint16_t recv_len;
 
     while (1)
@@ -311,7 +311,7 @@ void recv_task(void *argument)
 
 #if _WIZCHIP_ == W5100S
         reg_val &= 0x00FF;
-#elif _WIZCHIP_ == W5500
+#else
         reg_val = (reg_val >> 8) & 0x00FF;
 #endif
 
