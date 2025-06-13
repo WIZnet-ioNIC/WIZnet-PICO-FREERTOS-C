@@ -36,7 +36,7 @@ The Ethernet examples are compatible with the following Raspberry Pi-compatible 
 | **[W5500-EVB-Pico][link-w5500-evb-pico]** | RP2040 | W5500 | SPI | 8 | 32KB |  |
 | **[W55RP20-EVB-Pico][link-w55rp20-evb-pico]** | RP2040 | W5500 | SPI (PIO) | 8 | 32KB | SiP: RP2040 + W5500 |
 | **[W6100-EVB-Pico][link-w6100-evb-pico]** | RP2040 | W6100 | SPI | 8 | 32KB | Supports IPv4/IPv6 |
-| **W6300-EVB-Pico**                        | RP2040 | W6300 | QSPI (PIO) | 8 | 64KB | Supports IPv4/IPv6 |
+| **[W6300-EVB-Pico][link-w6300-evb-pico]** | RP2040 | W6300 | QSPI (PIO) | 8 | 64KB | Supports IPv4/IPv6 |
 | **[W5100S-EVB-Pico2][link-w5100s-evb-pico2]** | RP2350 | W5100S | SPI | 4 | 16KB |  |
 | **[W5500-EVB-Pico2][link-w5500-evb-pico2]** | RP2350 | W5500 | SPI | 8 | 32KB |  |
 | **[W6100-EVB-Pico2][link-w6100-evb-pico2]** | RP2350 | W6100 | SPI | 8 | 32KB | Supports IPv4/IPv6 |
@@ -460,6 +460,7 @@ Link
 [link-raspberry_pi_pico]: https://www.raspberrypi.com/products/raspberry-pi-pico/
 [link-wiznet_ethernet_hat]: https://docs.wiznet.io/Product/Open-Source-Hardware/wiznet_ethernet_hat
 [link-w6100-evb-pico]: https://docs.wiznet.io/Product/iEthernet/W6100/w6100-evb-pico
+[link-w6300-evb-pico]: https://docs.wiznet.io/Product/iEthernet/W6300/w6300-evb-pico
 [link-w5100s-evb-pico2]: https://docs.wiznet.io/Product/iEthernet/W5100S/w5100s-evb-pico2
 [link-w5500-evb-pico2]: https://docs.wiznet.io/Product/iEthernet/W5500/w5500-evb-pico2
 [link-w6100-evb-pico2]: https://docs.wiznet.io/Product/iEthernet/W6100/w6100-evb-pico2
