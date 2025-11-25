@@ -232,17 +232,17 @@ target_include_directories(SNMP_FILES PUBLIC
 
         
 # TFTP Server
-add_library(TFTP_FILES STATIC)
+#add_library(TFTP_FILES STATIC)
 
-target_sources(TFTP_FILES PUBLIC
-        ${WIZNET_DIR}/Internet/TFTP/tftp.c
-        ${WIZNET_DIR}/Internet/TFTP/netutil.c
-        )
+#target_sources(TFTP_FILES PUBLIC
+#        ${WIZNET_DIR}/Internet/TFTP/tftp.c
+#        ${WIZNET_DIR}/Internet/TFTP/netutil.c
+#        )
 
-target_include_directories(TFTP_FILES PUBLIC
-        ${WIZNET_DIR}/Ethernet
-        ${WIZNET_DIR}/Internet/TFTP
-        )
+#target_include_directories(TFTP_FILES PUBLIC
+#        ${WIZNET_DIR}/Ethernet
+#        ${WIZNET_DIR}/Internet/TFTP
+#        )
 
 # multicast
 add_library(MULTI_FILES STATIC)

@@ -10,9 +10,14 @@ if (DEFINED ENV{FREERTOS_KERNEL_PATH} AND (NOT FREERTOS_KERNEL_PATH))
     message("Using FREERTOS_KERNEL_PATH from environment ('${FREERTOS_KERNEL_PATH}')")
 endif ()
 
-set(FREERTOS_KERNEL_RP2040_RELATIVE_PATH "portable/ThirdParty/GCC/RP2040")
-# undo the above
-set(FREERTOS_KERNEL_RP2040_BACK_PATH "../../../..")
+
+if (PICO_PLATFORM STREQUAL "rp2350-arm-s" OR PICO_PLATFORM STREQUAL "rp2350")
+    set(FREERTOS_KERNEL_RP2040_RELATIVE_PATH "portable/ThirdParty/Community-Supported-Ports/GCC/RP2350_ARM_NTZ")
+    set(FREERTOS_KERNEL_RP2040_BACK_PATH "../../../../../../..")
+else()
+    set(FREERTOS_KERNEL_RP2040_RELATIVE_PATH "portable/ThirdParty/GCC/RP2040")
+    set(FREERTOS_KERNEL_RP2040_BACK_PATH "../../../..")
+endif()
 
 if (NOT FREERTOS_KERNEL_PATH)
     # check if we are inside the FreeRTOS kernel tree (i.e. this file has been included directly)

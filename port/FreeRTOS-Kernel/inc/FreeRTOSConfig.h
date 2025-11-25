@@ -101,14 +101,29 @@
 #define configMAX_SYSCALL_INTERRUPT_PRIORITY    [dependent on processor and application]
 #define configMAX_API_CALL_INTERRUPT_PRIORITY   [dependent on processor and application]
 */
+/* RP2350 (Cortex-M33) has 3 priority bits */
+#ifndef __NVIC_PRIO_BITS
+#define __NVIC_PRIO_BITS                        3
+#endif
 #define configKERNEL_INTERRUPT_PRIORITY         ( 3 << (8 - __NVIC_PRIO_BITS) )
 #define configMAX_SYSCALL_INTERRUPT_PRIORITY    ( 1 << (8 - __NVIC_PRIO_BITS) )
 
+/* FPU configuration for RP2350 - CRITICAL for floating point operations in tasks */
+#if (DEVICE_BOARD_NAME == W5100S_EVB_PICO2 || DEVICE_BOARD_NAME == W5500_EVB_PICO2 || \
+     DEVICE_BOARD_NAME == W6100_EVB_PICO2 || DEVICE_BOARD_NAME == W6300_EVB_PICO2)
+#define configENABLE_FPU                        1
+#define configENABLE_TRUSTZONE                  0
+#define configRUN_FREERTOS_SECURE_ONLY          1
+#define configENABLE_MPU                        0
+#endif
 
 #ifdef SIO_IRQ_FLAG
 #define SIO_IRQ_PROC0 15
 #endif
+/* Use build-time definition if available, otherwise disable SMP */
+#ifndef FREE_RTOS_KERNEL_SMP
 #define FREE_RTOS_KERNEL_SMP 0
+#endif
 #if FREE_RTOS_KERNEL_SMP // set by the RP2040 SMP port of FreeRTOS
 /* SMP port only */
 #define configNUM_CORES                         2
@@ -117,7 +132,7 @@
 #define configRUN_MULTIPLE_PRIORITIES           1
 #define configUSE_CORE_AFFINITY                 1
 #define configUSE_MINIMAL_IDLE_HOOK             0
-#define configUSE_PASSIVE_IDLE_HOOK             1
+#define configUSE_PASSIVE_IDLE_HOOK             0
 #endif
 
 #define configUSE_TIME_SLICING 1
